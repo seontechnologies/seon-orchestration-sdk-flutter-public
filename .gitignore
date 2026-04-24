@@ -1,0 +1,22 @@
+# Dart / Flutter
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Android
+**/android/**/build/
+**/android/.gradle
+**/.cxx/
+**/local.properties
+
+# iOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/App.framework
+**/ios/Flutter/ephemeral/
+
+.DS_Store
+.env

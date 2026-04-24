@@ -1,0 +1,105 @@
+# Triggered by the internal plugin repository after a pub.dev release (repository_dispatch).
+# Opens a PR: bumps the sample `pubspec.yaml` + README dependency line and prepends Changelog.
+#
+# No repository secrets are required for this workflow (uses GITHUB_TOKEN).
+#
+name: Repository dispatch — sync sample for Flutter plugin release
+
+on:
+  repository_dispatch:
+    types: [flutter_plugin_released]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.client_payload.version }}
+      RELEASE_NOTES_B64: ${{ github.event.client_payload.release_notes_b64 }}
+      TRIGGERED_BY: ${{ github.event.client_payload.triggered_by }}
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Decode release notes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "${RELEASE_NOTES_B64:-}" ]; then
+            echo "${RELEASE_NOTES_B64}" | base64 --decode > incoming_notes.md
+          else
+            printf '%s\n' "Released plugin version **${VERSION}**." > incoming_notes.md
+          fi
+          echo "Triggered by: ${TRIGGERED_BY:-unknown}"
+
+      - name: Bump README + pubspec and prepend changelog
+        shell: bash
+        env:
+          VERSION: ${{ github.event.client_payload.version }}
+        run: |
+          set -euo pipefail
+          python3 - "$VERSION" <<'PY'
+          import pathlib, re, sys
+
+          version = sys.argv[1]
+          notes = pathlib.Path("incoming_notes.md").read_text()
+
+          readme = pathlib.Path("README.md")
+          t = readme.read_text()
+
+          pat = r"(seon_orchestration_flutter:\s*\^)([0-9]+(?:\.[0-9]+)*)"
+          t2, n = re.subn(pat, rf"\g<1>{version}", t)
+          if n == 0:
+              raise SystemExit("README.md: could not find seon_orchestration_flutter: ^version to bump")
+          t = t2
+
+          m = re.search(r"(^##\s+Changelog\s*\n)", t, re.M)
+          if not m:
+              raise SystemExit("README.md must contain a '## Changelog' heading")
+          insert_at = m.end()
+          entry = f"### {version}\n\n{notes.strip()}\n\n"
+          t = t[:insert_at] + entry + t[insert_at:]
+          readme.write_text(t)
+
+          pub = pathlib.Path("pubspec.yaml")
+          ps = pub.read_text()
+          pat2 = r"^(\s*seon_orchestration_flutter:\s*\^)([0-9]+(?:\.[0-9]+)*)"
+          ps2, n2 = re.subn(
+              pat2,
+              lambda m: m.group(1) + version,
+              ps,
+              flags=re.M,
+          )
+          if n2 == 0:
+              raise SystemExit("pubspec.yaml: could not bump seon_orchestration_flutter version")
+          pub.write_text(ps2)
+          PY
+
+      - name: Create branch, PR, and GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BR="documentation/${VERSION}"
+          git checkout -B "$BR"
+          git add README.md pubspec.yaml
+          git commit -m "docs: sample for plugin ${VERSION}"
+          git push --set-upstream origin "$BR"
+          gh pr create \
+            --base "${DEFAULT_BRANCH}" \
+            --head "$BR" \
+            --title "Release: ${VERSION}" \
+            --body-file incoming_notes.md
+          gh release create "v${VERSION}" \
+            --target "$BR" \
+            --title "v${VERSION}" \
+            --notes-file incoming_notes.md
