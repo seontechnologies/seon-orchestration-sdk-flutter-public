@@ -267,10 +267,11 @@ packages:
   seon_orchestration_flutter:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.1.0"
+      name: seon_orchestration_flutter
+      sha256: aa4f6d0a82bd16cb0d6e141f6663cda2932c381c8c1f69199a80fdffc8b72073
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   sky_engine:
     dependency: transitive
     description: flutter
