@@ -30,11 +30,6 @@
                                     <constraint firstItem="YRO-k0-Ey4" firstAttribute="top" secondItem="mkR-SplashShell" secondAttribute="top" id="in-top"/>
                                     <constraint firstItem="YRO-k0-Ey4" firstAttribute="trailing" secondItem="mkR-SplashShell" secondAttribute="trailing" id="in-trail"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <real key="value" value="52"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

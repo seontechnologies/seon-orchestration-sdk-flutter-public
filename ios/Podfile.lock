@@ -1,23 +1,35 @@
 PODS:
   - app_settings (5.1.1):
     - Flutter
+  - DocumentReader (9.1.5851):
+    - RegulaCommon (= 9.1.1919)
+  - DocumentReaderRFID (9.1.15618)
   - Flutter (1.0.0)
-  - seon_orchestration_flutter (0.1.0):
+  - flutter_native_splash (2.4.3):
     - Flutter
-    - SEONOrchSDK (= 0.1.5)
-  - SEONOrchSDK (0.1.5):
-    - SEONResolver (~> 1.5.1)
+  - RegulaCommon (9.1.1919)
+  - seon_orchestration_flutter (1.0.3):
+    - Flutter
+    - SEONOrchSDK (= 1.0.1)
+  - SEONOrchSDK (1.0.1):
+    - DocumentReader (~> 9.1.0)
+    - DocumentReaderRFID (~> 9.1.0)
+    - SEONResolver (~> 1.5.2)
     - SeonSDK (~> 5.6.1)
-  - SEONResolver (1.5.1)
+  - SEONResolver (1.5.2)
   - SeonSDK (5.6.1)
 
 DEPENDENCIES:
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - Flutter (from `Flutter`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - seon_orchestration_flutter (from `.symlinks/plugins/seon_orchestration_flutter/ios`)
 
 SPEC REPOS:
   trunk:
+    - DocumentReader
+    - DocumentReaderRFID
+    - RegulaCommon
     - SEONOrchSDK
     - SEONResolver
     - SeonSDK
@@ -27,15 +39,21 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/app_settings/ios"
   Flutter:
     :path: Flutter
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   seon_orchestration_flutter:
     :path: ".symlinks/plugins/seon_orchestration_flutter/ios"
 
 SPEC CHECKSUMS:
   app_settings: 5127ae0678de1dcc19f2293271c51d37c89428b2
+  DocumentReader: 0596ecc002f480e3906a810d5474ddb3be6e9c03
+  DocumentReaderRFID: d106de993c8325c81b6bd4c9e2875590e727c43e
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  seon_orchestration_flutter: a2279831655ade9221633f79bf2acb4bc1af8c54
-  SEONOrchSDK: 058825783e5508999f1c5737668326db0dc07d8d
-  SEONResolver: 519c1ed8ac0cde65b95b74a2819ea9df5d61a253
+  flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
+  RegulaCommon: cd5a2a59d2b6bc2123ba0646a32dc60eed6f5f57
+  seon_orchestration_flutter: 24274113d3e8daa9a3de97d49921b7f52cb08136
+  SEONOrchSDK: 5503bd13293cc35260028915e086e10666f4e5f3
+  SEONResolver: b5fdc4c6147d48435dba484eca85c0c7167ddf85
   SeonSDK: 5d64b986f8cb53f2a8cafc7e54d8e578bf1da46a
 
 PODFILE CHECKSUM: ade96bceabe3919b69c16573938e4268fe3a6c9d
