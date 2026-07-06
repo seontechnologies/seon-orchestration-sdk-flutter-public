@@ -18,7 +18,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  seon_orchestration_flutter: ^1.0.4   # use pub.dev once published
+  seon_orchestration_flutter: ^1.0.5   # use pub.dev once published
 ```
 
 For a local checkout during development:
@@ -164,6 +164,11 @@ flutter run
 MIT
 
 ## Changelog
+
+### 1.0.5
+
+- Updated native iOS `SEONOrchSDK` to 1.0.3
+- Updated native Android `orchestration-android-sdk` to 1.0.1
 
 ### 1.0.4
 
