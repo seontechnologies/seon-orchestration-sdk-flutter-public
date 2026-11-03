@@ -268,10 +268,10 @@ packages:
     dependency: "direct main"
     description:
       name: seon_orchestration_flutter
-      sha256: aa4f6d0a82bd16cb0d6e141f6663cda2932c381c8c1f69199a80fdffc8b72073
+      sha256: "9d379ee03b0016ce7cc20a9ee21e05170020bf6a1ba6de7c29c1bad78e5911bd"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.7"
   sky_engine:
     dependency: transitive
     description: flutter

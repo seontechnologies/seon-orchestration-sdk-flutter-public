@@ -8,16 +8,16 @@ PODS:
   - flutter_native_splash (2.4.3):
     - Flutter
   - RegulaCommon (9.1.1919)
-  - seon_orchestration_flutter (1.0.3):
+  - seon_orchestration_flutter (1.0.7):
     - Flutter
-    - SEONOrchSDK (= 1.0.1)
-  - SEONOrchSDK (1.0.1):
+    - SEONOrchSDK (= 1.0.5)
+  - SEONOrchSDK (1.0.5):
     - DocumentReader (~> 9.1.0)
     - DocumentReaderRFID (~> 9.1.0)
     - SEONResolver (~> 1.5.2)
-    - SeonSDK (~> 5.6.1)
+    - SeonSDK (= 5.8.2)
   - SEONResolver (1.5.2)
-  - SeonSDK (5.6.1)
+  - SeonSDK (5.8.2)
 
 DEPENDENCIES:
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
@@ -51,11 +51,11 @@ SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
   RegulaCommon: cd5a2a59d2b6bc2123ba0646a32dc60eed6f5f57
-  seon_orchestration_flutter: 24274113d3e8daa9a3de97d49921b7f52cb08136
-  SEONOrchSDK: 5503bd13293cc35260028915e086e10666f4e5f3
+  seon_orchestration_flutter: cd8ef1fa011cd6c135f613dbb6daa07263d4d93f
+  SEONOrchSDK: f72cddf6288d24e201ad9b410743967070a4bfab
   SEONResolver: b5fdc4c6147d48435dba484eca85c0c7167ddf85
-  SeonSDK: 5d64b986f8cb53f2a8cafc7e54d8e578bf1da46a
+  SeonSDK: f6f9eacf707dc81d8fa227654ad86d1dccfaf624
 
-PODFILE CHECKSUM: ade96bceabe3919b69c16573938e4268fe3a6c9d
+PODFILE CHECKSUM: 976ce2e6b9868bd0860275e94130cd99a4d7f9cd
 
 COCOAPODS: 1.16.2

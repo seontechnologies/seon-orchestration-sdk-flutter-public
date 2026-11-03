@@ -18,7 +18,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  seon_orchestration_flutter: ^1.0.5   # use pub.dev once published
+  seon_orchestration_flutter: ^1.0.7   # use pub.dev once published
 ```
 
 For a local checkout during development:
@@ -116,6 +116,13 @@ await SeonOrchestration.dispose();
 | Android  | API 26+ / Android 8.0+ (see `android/build.gradle`) |
 | Flutter  | ≥3.16.0 (see `pubspec.yaml` `environment.flutter`) |
 
+> **Note**: The native Android SDK depends transitively on Regula's Document Reader libraries
+> (`com.regula.documentreader:api` / `com.regula.documentreader.core:rfid`) for document scanning,
+> which aren't published to Maven Central or Google's Maven repo. This plugin's `android/build.gradle`
+> declares Regula's public repository (`https://maven.regulaforensics.com/RegulaDocumentReader`) via
+> a `rootProject.allprojects { repositories { ... } }` block, so it's applied automatically to any
+> app that depends on this plugin — no manual Gradle changes needed on the consuming side.
+
 
 ## Permissions
 
@@ -125,11 +132,11 @@ The SEON SDK may require camera, microphone, and storage. Location is optional i
 
 ```xml
 <key>NSCameraUsageDescription</key>
-<string>Required for ID verification and selfie capture</string>
+<string>App needs access to the camera to record videos</string>
 <key>NSMicrophoneUsageDescription</key>
-<string>Required for video liveness checks</string>
+<string>App needs access to the microphone to record videos</string>
 <key>NSPhotoLibraryUsageDescription</key>
-<string>Required for proof of address document upload</string>
+<string>This app requires access to the photo library to save images.</string>
 ```
 
 ### Android
@@ -164,6 +171,16 @@ flutter run
 MIT
 
 ## Changelog
+
+### 1.0.7
+
+- Updated native iOS `SEONOrchSDK` to **1.0.5**
+- Native Android `orchestration-android-sdk` remains **1.0.2**
+
+### 1.0.6
+
+- Updated native iOS `SEONOrchSDK` to **1.0.4**
+- Updated native Android `orchestration-android-sdk` to **1.0.2**
 
 ### 1.0.5
 
