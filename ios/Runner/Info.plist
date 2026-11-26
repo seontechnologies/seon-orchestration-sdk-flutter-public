@@ -24,24 +24,41 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NFCReaderUsageDescription</key>
 	<string>This app uses NFC to read the chip on your identity document for verification purposes.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app requires camera access for identity verification.</string>
+	<string>App needs access to the camera to record videos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires location access for fraud prevention during identity verification.</string>
+	<string>We need to access your location to verify if it's match with your identity and requested service</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This app requires microphone access for identity verification.</string>
+	<string>App needs access to the microphone to record videos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires photo library access for identity verification.</string>
+	<string>This app requires access to the photo library to save images.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneDelegateClassName</key>
+					<string>SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UIStatusBarHidden</key>
 	<false/>
 	<key>UISupportedInterfaceOrientations</key>
@@ -57,7 +74,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+		<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
 	<array>
 		<string>A0000002471001</string>
 		<string>E80704007F00070302</string>
